@@ -7,18 +7,130 @@
     font-family: 'Raleway', sans-serif;
     font-weight: 700;
     color: #ffffff;
+    outline: none;
+    user-select: none;
+    overflow: hidden;
+}
+
+body {
+    height: 100%;
+}
+
+main {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    border-radius: 15px;
+    background-color: #2e2e2e;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    height: 100%;
 }
 
 #app {
     position: absolute;
-    top: 20px;
+    top: 62px;
     left: 20px;
     right: 20px;
     bottom: 20px;
-    background-color: red;
+    height: 100%;
 }
 
-#app > div.selector {
-    background-color: aqua;
+#titlebar {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+    height: 32px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+#titlebar > * {
+    display: inline;
+}
+
+#titlebar > p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 14px;
+    line-height: 34px;
+    margin-left: 15px;
+    font-weight: 500;
+}
+
+#titlebar > button {
+    float: right;
+    width: 48px;
+    height: 32px;
+    border: 0px;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+#titlebar > button:hover {
+    background-color: #ffffff35;
+}
+
+#titlebar > button:first-child:hover {
+    background-color: red;
+    border-top-right-radius: 15px;
+}
+
+#app > article.selector {
     margin-bottom: 20px;
+}
+
+#app > article.selector > button {
+    border: 0px;
+    color: #ffffff;
+    font-weight: 500;
+    width: 120px;
+    height: 30px;
+    border: none;
+    float: right;
+    margin-top: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #60cdff;
+}
+
+#app > article.selector > input {
+    height: 30px;
+    border: none;
+    margin-top: 5px;
+    color: #ffffff;
+    padding: 0px 10px;
+    border-radius: 5px;
+    font-weight: normal;
+    width: calc(100% - 130px);
+    background-color: #212121;
+}
+
+#app > article.selector > div {
+    position: absolute;
+    top: 180px;
+    left: 0px;
+    right: 0px;
+    bottom: 130px;
+    margin-top: 5px;
+    font-weight: 200;
+    border-radius: 5px;
+    padding: 7px 7px 7px 7px;
+    background-color: #222222;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#app > article.selector:last-child > button {
+    position: absolute;
+    bottom: 90px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+svg {
+    width: 10px;
+    height: 10px;
+    fill: #ffffff;
 }

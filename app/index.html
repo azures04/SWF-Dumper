@@ -8,22 +8,46 @@
 </head>
 <body>
     
-    <div id="app">
-        <div class="selector">
-            <label for="inputSelectorText"><b>Input</b></label>
-            <br>
-            <input type="text" name="" id="inputSelectorText">
-            <input type="file" id="inputSelectorFile" hidden>
-            <button>Selectionner</button>
+    <main>
+        <div id="titlebar">
+            <p>SWF Dumper (Exe to SWF Dumper)</p>
+            <button>    
+                <svg viewBox="0 0 10 10"><polygon points="10.2,0.7 9.5,0 5.1,4.4 0.7,0 0,0.7 4.4,5.1 0,9.5 0.7,10.2 5.1,5.8 9.5,10.2 10.2,9.5 5.8,5.1" /></svg>
+            </button>
+            <button>
+                <svg viewBox="0 0 10 10"><path d="M0,0v10h10V0H0z M9,9H1V1h8V9z" /></svg>
+            </button>
+            <button>
+			    <svg x="0px" y="0px" viewBox="0 0 10.2 1"><rect x="0" y="50%" width="10.2" height="1" /></svg>
+            </button>
         </div>
-        <div class="selector">
-            <label for="outputSelectorText"><b>Ouput</b></label>
-            <br>
-            <input type="text" name="" id="outputSelectorText">
-            <input type="file" id="outputSelectorFile" hidden>
-            <button>Selectionner</button>
+        <div id="app">
+            <article class="selector">
+                <label for="inputSelectorText"><b>Fichier d'entré</b></label>
+                <br>
+                <input type="text" placeholder="C:\Utilisateurs\User\Desktop\input.exe" id="inputSelectorText">
+                <input type="file" id="inputSelectorFile" hidden>
+                <button onclick="inputSelectorFile.click()">Séléctionner</button>
+            </article>
+            <article class="selector">
+                <label for="outputSelectorText"><b>Fichier de sortie</b></label>
+                <br>
+                <input type="text" placeholder="C:\Utilisateurs\User\Desktop\output.swf" id="outputSelectorText">
+                <input type="file" id="outputSelectorFile" hidden>
+                <button onclick="outputSelectorFile.click()">Séléctionner</button>
+            </article>
+            <article class="selector">
+                <label for="stdout"><b>Logs</b></label>
+                <br>
+                <div>
+                    a
+                </div>
+                <button>
+                    Lancez le dump
+                </button>
+            </article>
         </div>
-    </div>
+    </main>
 
 </body>
 </html>
