@@ -4,16 +4,39 @@ const os = require("os")
 let win
 
 function createWindow () {
-    if (!os.platform() == "win32") {
-        win = new BrowserWindow({
-            width: 800,
-            height: 600,
-            webPreferences: {
-                preload: path.join(__dirname, "preload.js")
+    if (os.platform() == "win32") {
+        if (os.release().split(".")[0] == "10") {
+            if (os.release().split[2] == "22000") {
+                const { MicaBrowserWindow } = require("mica-electron")
+                win = new MicaBrowserWindow({
+                    width: 800,
+                    height: 600,
+                    autoHideMenuBar: true,
+                    show: false,
+                    titleBarStyle: "hidden",
+                    webPreferences: {
+                        preload: path.join(__dirname, "preload.js")
+                    }
+                })
+            } else {
+                win = new BrowserWindow({
+                    width: 800,
+                    height: 600,
+                    autoHideMenuBar: true,
+                    show: false,
+                    frame: false,
+                    titleBarStyle: "hidden",
+                    transparent: true,
+                    webPreferences: {
+                        preload: path.join(__dirname, "preload.js")
+                    }
+                })
             }
-        })
-
-        win.loadFile(path.join(__dirname, "app/index.html"))
+            win.loadFile(path.join(__dirname, "app/index.html"))
+            win.webContents.once("dom-ready", () => {
+                win.show()
+            })
+        }
     } else {
         dialog.showErrorBox("Plateforme nun supportée", `Vous tourner actuellement sur ${os.type()} ${os.release()}, Cette application ne peut tourner que sur Windows`)
     }
@@ -28,4 +51,8 @@ app.whenReady().then(() => {
 
 app.on("window-all-closed", function () {
     if (process.platform !== "darwin") app.quit()
+})
+
+app.on("browser-window-created", (event, win) => {
+    win.removeMenu()
 })

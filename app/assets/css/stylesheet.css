@@ -2,15 +2,15 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    background-color: #d8d8d8;
 }
 
 #app {
     position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px;
-    background-color: #d8d8d8;
+    top: 30px;
+    left: 30px;
+    right: 30px;
+    bottom: 30px;
 }
 
 #app > div.centered {
