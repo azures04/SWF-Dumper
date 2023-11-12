@@ -46,6 +46,7 @@ main {
     height: 32px;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
+    -webkit-app-region: drag;
 }
 
 #titlebar > * {
@@ -67,6 +68,7 @@ main {
     border: 0px;
     cursor: pointer;
     background-color: transparent;
+    -webkit-app-region: no-drag;
 }
 
 #titlebar > button:hover {

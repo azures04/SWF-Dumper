@@ -1,6 +1,8 @@
 const { app, BrowserWindow, dialog, ipcMain } = require("electron")
 const path = require("path")
 const os = require("os")
+const fs = require("fs")
+const childProcess = require("child_process")
 let win
 
 function createWindow () {
@@ -85,6 +87,25 @@ ipcMain.on("action", (evt, data) => {
                 win.unmaximize()
             } else {
                 win.maximize()
+            }
+            break
+        case "handleResize":
+            win.webContents.executeJavaScript(`handleResize(${win.isMaximized()})`)
+            break
+        case "dump":
+            if (fs.existsSync(path.join(data.data.input))) {
+                if (!fs.existsSync(data.data.output)) {
+                    const dumperProcess = childProcess.spawn("tool.exe", ["--input", data.data.input, "--output", data.data.output] )
+                    dumperProcess.stdout.setEncoding("utf-8")
+                    dumperProcess.stdout.on("data", (buffer) => {
+                        console.log(buffer)
+                    })
+                    
+                } else {
+                    dialog.showErrorBox("Fichier déjà existant", "Le fichier selectionner est visiblement déjà présent (fichier de sortie)")
+                }
+            } else {
+                dialog.showErrorBox("Fichier introuvable", "Le fichier selectionner est visiblement introuvable (fichier d'entré)")
             }
             break
     }

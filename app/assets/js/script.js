@@ -17,3 +17,5 @@ function handleResize(boolean) {
         document.querySelector("#titlebar").children[0].style.borderRadius = "15px"
     }
 }
+
+window.onresize = () => swf_dumper.window.handleResize()
