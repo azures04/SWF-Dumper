@@ -95,14 +95,14 @@ ipcMain.on("action", (evt, data) => {
         case "dump":
             if (fs.existsSync(path.join(data.data.input))) {
                 if (!fs.existsSync(data.data.output)) {
-                    const dumperProcess = childProcess.spawn("tool.exe", ["--input", data.data.input, "--output", data.data.output] )
-                    dumperProcess.stdout.setEncoding("utf-8")
-                    dumperProcess.stdout.on("data", (buffer) => {
-                        console.log(buffer)
-                    })
-                    
+                    dump(data.data.input, data.data.output)
                 } else {
-                    dialog.showErrorBox("Fichier déjà existant", "Le fichier selectionner est visiblement déjà présent (fichier de sortie)")
+                    try {
+                        fs.rmSync(path.join(data.data.output))
+                        dump(data.data.input, data.data.output)
+                    } catch (error) {
+                        dialog.showErrorBox("Fichier déjà existant", "Le fichier selectionner est visiblement déjà présent (fichier de sortie)")
+                    }
                 }
             } else {
                 dialog.showErrorBox("Fichier introuvable", "Le fichier selectionner est visiblement introuvable (fichier d'entré)")
@@ -110,3 +110,17 @@ ipcMain.on("action", (evt, data) => {
             break
     }
 })
+
+function dump(input, output) {
+    const dumperProcess = childProcess.spawn("tool.exe", ["--input", input, "--output", output] )
+    win.webContents.executeJavaScript(`document.querySelectorAll('#console')[0].innerHTML = ""`)
+    dumperProcess.stdout.setEncoding("utf-8")
+    dumperProcess.stdout.on("data", (data) => {  
+        console.log(data)
+        win.webContents.executeJavaScript(`document.querySelectorAll('#console')[0].innerHTML += \`[STDOUT] : ${data.replaceAll("\\", "/")}\``)
+    })
+    dumperProcess.stderr.on("data", (data) => {  
+        console.log(data)
+        win.webContents.executeJavaScript(`document.querySelectorAll('#console')[0].innerHTML += \`[STDERR] : ${data.replaceAll("\\", "/")}\``)
+    })
+}

@@ -18,4 +18,8 @@ function handleResize(boolean) {
     }
 }
 
+function handleOnFileInputChange(input_element) {
+    input_element.parentNode.children[2].value = input_element.files[0].path
+}
+
 window.onresize = () => swf_dumper.window.handleResize()

@@ -26,23 +26,23 @@
                 <label for="inputSelectorText"><b>Fichier d'entré</b></label>
                 <br>
                 <input type="text" placeholder="C:\Utilisateurs\User\Desktop\input.exe" id="inputSelectorText">
-                <input type="file" id="inputSelectorFile" hidden>
+                <input type="file" id="inputSelectorFile" onchange="handleOnFileInputChange(this)" accept=".exe" hidden>
                 <button onclick="inputSelectorFile.click()">Séléctionner</button>
             </article>
             <article class="selector">
                 <label for="outputSelectorText"><b>Fichier de sortie</b></label>
                 <br>
                 <input type="text" placeholder="C:\Utilisateurs\User\Desktop\output.swf" id="outputSelectorText">
-                <input type="file" id="outputSelectorFile" hidden>
+                <input type="file" id="outputSelectorFile" onchange="handleOnFileInputChange(this)" accept=".swf" hidden>
                 <button onclick="outputSelectorFile.click()">Séléctionner</button>
             </article>
             <article class="selector">
                 <label for="stdout"><b>Logs</b></label>
                 <br>
-                <div>
-                    a
+                <div id="console">
+                    
                 </div>
-                <button>
+                <button onclick="swf_dumper.dumper.dump(inputSelectorText.value, outputSelectorText.value)">
                     Lancez le dump
                 </button>
             </article>

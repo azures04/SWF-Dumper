@@ -9,6 +9,13 @@ contextBridge.exposeInMainWorld("swf_dumper", {
         handleResize() { ipcRenderer.send("action", { action: "handleResize" }) }
     },
     dumper: {
-        dump(input, output) { ipcRenderer.send("action", { action: "dump", data: { input, output } }) }
+        dump(input, output) {
+            console.log(input, output)
+            if (input && output) {
+                ipcRenderer.send("action", { action: "dump", data: { input, output } })
+            } else {
+                alert(new Error("Paramètres manquant"))
+            }
+        }
     }
 })
