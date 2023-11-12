@@ -4,16 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/stylesheet.css">
-    <title>Document</title>
+    <title>SWF Dumper (Exe to SWF Dumper)</title>
 </head>
 <body>
     
     <div id="app">
-        <button class="theme" style="float: right;">
-            Heyyyy
-        </button>
-        <div class="centered">
-
+        <div class="selector">
+            <label for="inputSelectorText"><b>Input</b></label>
+            <br>
+            <input type="text" name="" id="inputSelectorText">
+            <input type="file" id="inputSelectorFile" hidden>
+            <button>Selectionner</button>
+        </div>
+        <div class="selector">
+            <label for="outputSelectorText"><b>Ouput</b></label>
+            <br>
+            <input type="text" name="" id="outputSelectorText">
+            <input type="file" id="outputSelectorFile" hidden>
+            <button>Selectionner</button>
         </div>
     </div>
 

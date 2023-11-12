@@ -6,18 +6,21 @@ let win
 function createWindow () {
     if (os.platform() == "win32") {
         if (os.release().split(".")[0] == "10") {
-            if (os.release().split[2] == "22000") {
+            if (os.release().split(".")[2] >= "22000") {
                 const { MicaBrowserWindow } = require("mica-electron")
                 win = new MicaBrowserWindow({
                     width: 800,
                     height: 600,
-                    autoHideMenuBar: true,
                     show: false,
-                    titleBarStyle: "hidden",
+                    transparent: true,
+                    autoHideMenuBar: true,
+                    frame: true,
                     webPreferences: {
                         preload: path.join(__dirname, "preload.js")
                     }
                 })
+                win.setDarkTheme()
+                win.setMicaEffect()
             } else {
                 win = new BrowserWindow({
                     width: 800,
@@ -32,6 +35,7 @@ function createWindow () {
                     }
                 })
             }
+            win.setIcon(path.join(__dirname, "logo.png"))
             win.loadFile(path.join(__dirname, "app/index.html"))
             win.webContents.once("dom-ready", () => {
                 win.show()

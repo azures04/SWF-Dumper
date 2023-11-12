@@ -4,11 +4,18 @@
   "description": "",
   "main": "main.js",
   "scripts": {
+    "start": "electron .",
+    "dev": "electronmon .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Azures04",
   "license": "MIT",
   "devDependencies": {
+    "electron": "^27.0.4",
+    "electron-builder": "^24.6.4",
     "electronmon": "^2.0.2"
+  },
+  "dependencies": {
+    "mica-electron": "^1.5.3"
   }
 }
