@@ -19,3 +19,7 @@ nsis:
   perMachine: false
   allowElevation: true
   allowToChangeInstallationDirectory: true
+
+directories:
+  buildResources: 'build'
+  output: 'dist'
