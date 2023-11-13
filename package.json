@@ -1,45 +1,22 @@
 {
-  "name": "swf-dumper",
-  "version": "0.0.1",
-  "description": "",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron .",
-    "dev": "electronmon .",
-    "buildW": "electron-builder build -w --x64 --publish=always",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Azures04",
-  "license": "MIT",
-  "devDependencies": {
-    "electron": "^27.0.4",
-    "electron-builder": "^24.6.4",
-    "electronmon": "^2.0.2"
-  },
-  "dependencies": {
-    "mica-electron": "^1.5.3"
-  },
-   "build": {
-      "appId": "fr.azures04.swf_dumper",
-      "productName": "SWF Dumper",
-      "asar": true,
-      "copyright": "Copyright © 2023 Azures04",
-      "win": {
-          "target": [
-              "portable",
-              {
-                  "target": "nsis",
-                  "arch": [
-                      "x64",
-                      "ia32"
-                  ]
-              },
-              "nsis",
-              {
-                "oneClick": false
-              }
-          ],
-          "icon": "logo.png"
-      }
-  }
+	"name": "swf-dumper",
+	"version": "0.0.1",
+	"description": "",
+	"main": "main.js",
+	"scripts": {
+		"start": "electron .",
+		"dev": "electronmon .",
+		"buildW": "electron-builder build -w --x64 --publish=always -c.electronVersion=27.0.4",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Azures04",
+	"license": "MIT",
+	"devDependencies": {
+		"electron": "^27.0.4",
+		"electron-builder": "^24.6.4",
+		"electronmon": "^2.0.2"
+	},
+	"dependencies": {
+		"mica-electron": "^1.5.3"
+	}
 }

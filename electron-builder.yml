@@ -1,0 +1,21 @@
+appId: 'swf_dumper'
+productName: 'SWF Dumper'
+artifactName: '${productName}-setup-${version}.${ext}'
+
+copyright: 'Copyright © 2023 Azures04'
+
+asar: true
+compression: 'maximum'
+
+# Windows Configuration
+win: 
+  target: 
+    - target: 'nsis'
+      arch: 'x64'
+
+# Windows Installer Configuration
+nsis:
+  oneClick: false
+  perMachine: false
+  allowElevation: true
+  allowToChangeInstallationDirectory: true
