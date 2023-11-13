@@ -2,13 +2,13 @@ appId: 'swf_dumper'
 productName: 'SWF Dumper'
 artifactName: '${productName}-setup-${version}.${ext}'
 copyright: 'Copyright © 2023 Azures04'
-icon: "logo.png"
+icon: "build/logo.png"
 asar: true
 compression: 'maximum'
 
 # Windows Configuration
 win: 
-  icon: "build/icon.png"
+  icon: "build/icon.ico"
   target: 
     - target: 'nsis'
       arch: 'x64'
