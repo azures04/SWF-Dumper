@@ -8,7 +8,7 @@ let win
 function createWindow () {
     if (os.platform() == "win32") {
         if (os.release().split(".")[0] == "10") {
-            if (os.release().split[2] == "22000") {
+            if (os.release().split(".")[2] >= "22000") {
                 const { MicaBrowserWindow } = require("mica-electron")
                 win = new MicaBrowserWindow({
                     width: 900,
@@ -17,6 +17,7 @@ function createWindow () {
                     minWidth: 900,
                     autoHideMenuBar: true,
                     show: false,
+                    frame: false,
                     titleBarStyle: "hidden",
                     webPreferences: {
                         preload: path.join(__dirname, "preload.js"),
@@ -26,7 +27,9 @@ function createWindow () {
                         experimentalFeatures: true
                     }
                 })
-                win.setRoundedCorner()
+                win.setMicaEffect()
+                win.setDarkTheme()
+                
             } else {
                 win = new BrowserWindow({
                     width: 900,
@@ -47,11 +50,21 @@ function createWindow () {
                     }
                 })
             }
+            win.webContents.openDevTools()
+            win.setIcon(path.join(__dirname, "logo.png"))
             win.loadFile(path.join(__dirname, "app/index.html"))
             win.webContents.once("dom-ready", () => {
                 win.show()
             })
-            win.setIcon(path.join(__dirname, "logo.png"))
+            if (os.release().split(".")[0] == "10") {
+                if (os.release().split(".")[2] >= "22000") {
+                    win.webContents.executeJavaScript(`handleWindows11UI(true)`)
+                } else {
+                    win.webContents.executeJavaScript(`handleWindows11UI(false)`)
+                }
+            } else {
+                win.webContents.executeJavaScript(`handleWindows11UI(false)`)
+            }
         }
     } else {
         dialog.showErrorBox("Plateforme nun supportée", `Vous tourner actuellement sur ${os.type()} ${os.release()}, Cette application ne peut tourner que sur Windows`)

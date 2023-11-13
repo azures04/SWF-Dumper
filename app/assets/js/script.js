@@ -22,4 +22,16 @@ function handleOnFileInputChange(input_element) {
     input_element.parentNode.children[2].value = input_element.files[0].path
 }
 
-window.onresize = () => swf_dumper.window.handleResize()
+function handleWindows11UI(isWin11) {
+    const root = document.querySelector(":root").style
+    if (isWin11) {
+        root.setProperty("--background-color", "transparent")
+        root.setProperty("--sub-background-color", "#21212177")
+        handleResize(true)
+    } else {
+        root.setProperty("--background-color", "#2e2e2e")
+        root.setProperty("--sub-background-color", "#212121")
+        window.onresize = () => swf_dumper.window.handleResize()
+    }
+}
+
