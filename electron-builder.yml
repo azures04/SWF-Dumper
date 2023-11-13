@@ -8,7 +8,7 @@ compression: 'maximum'
 
 # Windows Configuration
 win: 
-  icon: "logo.png"
+  icon: "build/icon.png"
   target: 
     - target: 'nsis'
       arch: 'x64'
