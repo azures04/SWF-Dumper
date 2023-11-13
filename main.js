@@ -52,7 +52,6 @@ function createWindow () {
                 win.show()
             })
             win.setIcon(path.join(__dirname, "logo.png"))
-            win.webContents.openDevTools()
         }
     } else {
         dialog.showErrorBox("Plateforme nun supportée", `Vous tourner actuellement sur ${os.type()} ${os.release()}, Cette application ne peut tourner que sur Windows`)
