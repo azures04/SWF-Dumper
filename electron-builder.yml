@@ -1,6 +1,6 @@
 appId: 'swf_dumper'
 productName: 'SWF Dumper'
-artifactName: '${productName}-setup-${version}.${ext}'
+artifactName: '${productName} ${arch} ${version}.${ext}'
 copyright: 'Copyright © 2023 Azures04'
 icon: "build/logo.png"
 asar: true

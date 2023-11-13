@@ -50,7 +50,6 @@ function createWindow () {
                     }
                 })
             }
-            win.webContents.openDevTools()
             win.setIcon(path.join(__dirname, "logo.png"))
             win.loadFile(path.join(__dirname, "app/index.html"))
             win.webContents.once("dom-ready", () => {
