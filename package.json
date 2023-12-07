@@ -17,6 +17,7 @@
 		"electronmon": "^2.0.2"
 	},
 	"dependencies": {
+		"@electron/packager": "^18.0.0",
 		"mica-electron": "^1.5.3"
 	}
 }
